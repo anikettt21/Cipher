@@ -86,7 +86,7 @@ def get_projects(
         
     # Select key fields
     key_fields = [
-        "recommendation_row_id", "recommendation_work_id", "completion_work_id", "mp_name", 
+        "recommendation_row_id", "recommendation_work_id", "completion_work_id", "work_description", "mp_name", 
         "constituency", "state", "category", "recommended_amount", "final_amount", 
         "match_score", "match_tier", "risk_score", "risk_level"
     ]

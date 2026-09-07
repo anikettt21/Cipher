@@ -91,6 +91,14 @@ export default function ProjectDetail() {
         </div>
       </div>
 
+      {project.work_description && (
+        <div className="mb-6 mt-4">
+          <h3 className="text-lg font-medium text-slate-800 leading-snug line-clamp-3" title={project.work_description}>
+            {project.work_description}
+          </h3>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Recommendation vs Completion */}

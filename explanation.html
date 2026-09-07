@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cipher Project - Technical Architecture & Demo Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+            background: #fff;
+        }
+
+        h1 { font-size: 36px; color: #1e3a8a; border-bottom: 3px solid #1e3a8a; padding-bottom: 10px; }
+        h2 { font-size: 24px; color: #2563eb; margin-top: 40px; border-bottom: 1px solid #e5e7eb; padding-bottom: 5px; }
+        h3 { font-size: 20px; color: #1f2937; }
+        
+        .title-page {
+            text-align: center;
+            margin-top: 150px;
+            margin-bottom: 200px;
+            page-break-after: always;
+        }
+        .title-page h1 { border: none; font-size: 48px; margin-bottom: 10px; }
+        .title-page p { font-size: 24px; color: #6b7280; }
+
+        .box {
+            background-color: #f3f4f6;
+            border-left: 5px solid #3b82f6;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .alert-box {
+            background-color: #fef2f2;
+            border-left: 5px solid #ef4444;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .grid {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .grid-item {
+            flex: 1;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stack-badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .flowchart {
+            text-align: center;
+            margin: 30px 0;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            text-align: left;
+        }
+        th { background-color: #f9fafb; color: #111827; }
+
+        .page-break { page-break-before: always; }
+    </style>
+</head>
+<body>
+
+    <div class="title-page">
+        <h1>The Cipher Project</h1>
+        <p>MPLADS Transparency & Anomaly Detection System</p>
+        <p style="font-size: 18px; margin-top: 50px;">Complete Technical Architecture & Demo Guide</p>
+    </div>
+
+    <h2>1. Project Overview & The Problem We Solve</h2>
+    <p>The Member of Parliament Local Area Development Scheme (MPLADS) involves massive data regarding works recommended, completed, and funds expended. However, this data is often siloed, inconsistent, and lacks automated checks for irregularities. <strong>The Cipher Project</strong> bridges this gap by creating an automated analytical pipeline that ingests raw government data, matches records intelligently, and flags anomalies or risk indicators.</p>
+
+    <div class="alert-box">
+        <strong>Key Philosophy (Tell the Judge):</strong> Our system identifies anomalies and risk indicators. It does NOT automatically prove fraud. It points auditors and reviewers exactly where they need to look by providing a mathematically backed <strong>Risk Score (0-100)</strong>.
+    </div>
+
+    <h2>2. How the System Works (The Big Picture)</h2>
+    <div class="flowchart">
+        Raw Data &#8594; Data Cleaning &#8594; AI/Fuzzy Matching &#8594; Feature Engineering &#8594; Anomaly Detection (AI) &#8594; Interactive Dashboard
+    </div>
+    <p>Our system is decoupled into a robust analytical <strong>Backend (Python)</strong> and a responsive <strong>Frontend (React)</strong>.</p>
+
+    <div class="grid">
+        <div class="grid-item">
+            <h3>Backend Architecture</h3>
+            <p>A multi-stage data pipeline that ingests CSVs, cleans text, matches related works, calculates financial features, and uses machine learning (Isolation Forests) to detect statistical anomalies.</p>
+        </div>
+        <div class="grid-item">
+            <h3>Frontend Architecture</h3>
+            <p>A React+Vite dashboard that consumes the backend's exported anomaly data to provide beautiful, actionable insights, charts, and detailed project explorations.</p>
+        </div>
+    </div>
+
+    <h2>3. The Tech Stack</h2>
+    <div class="box">
+        <strong>Backend / Data Science Pipeline:</strong><br>
+        <span class="stack-badge">Python 3</span>
+        <span class="stack-badge">Pandas (Data manipulation)</span>
+        <span class="stack-badge">Scikit-Learn (Isolation Forest ML)</span>
+        <span class="stack-badge">RapidFuzz (Fuzzy string matching)</span>
+        <span class="stack-badge">Groq (LLM Capabilities)</span>
+    </div>
+    <div class="box">
+        <strong>Frontend / User Interface:</strong><br>
+        <span class="stack-badge">React 19</span>
+        <span class="stack-badge">Vite (Build Tool)</span>
+        <span class="stack-badge">Tailwind CSS (Styling)</span>
+        <span class="stack-badge">Recharts (Data Visualization)</span>
+        <span class="stack-badge">Lucide React (Icons)</span>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>4. Backend Deep Dive: Step-by-Step Pipeline</h2>
+    <p>If the judge asks <em>"How do you process the data?"</em>, explain these sequential steps:</p>
+    <table>
+        <tr>
+            <th>Step</th>
+            <th>What happens under the hood?</th>
+        </tr>
+        <tr>
+            <td><strong>1. Cleaning & Normalization</strong></td>
+            <td>Standardizes dates, amounts, and text. Extracts meaningful entities (like MP names, States) from messy raw data.</td>
+        </tr>
+        <tr>
+            <td><strong>2. Multi-Signal Matching</strong></td>
+            <td>Uses RapidFuzz to match "Recommended Works" with "Completed Works". It checks project descriptions and doesn't rely solely on Work IDs, avoiding errors when IDs are missing or wrong. Matches are categorized into <em>Tier 1 (High Confidence)</em> and <em>Tier 2 (Provisional)</em>.</td>
+        </tr>
+        <tr>
+            <td><strong>3. Feature Engineering</strong></td>
+            <td>Calculates timeline deviations, cost overrides, and financial differences relative to peer projects.</td>
+        </tr>
+        <tr>
+            <td><strong>4. Anomaly Detection (AI)</strong></td>
+            <td>Uses <strong>Isolation Forest</strong> (an unsupervised Machine Learning algorithm from Scikit-Learn) to find outliers. It looks for patterns that don't fit the norm (e.g., a project that took way too long or cost disproportionately high).</td>
+        </tr>
+        <tr>
+            <td><strong>5. Risk Scoring</strong></td>
+            <td>Combines ML outputs and financial evidence into a single explainable 0-100 Risk Score. Outputs are saved as JSON/CSV for the frontend.</td>
+        </tr>
+    </table>
+
+    <h2>5. Frontend Deep Dive: What the User Sees</h2>
+    <p>The frontend provides three main views to investigate the data:</p>
+    <ul>
+        <li><strong>Dashboard:</strong> A high-level overview with charts (using Recharts). It shows the total number of anomalies, risk distributions, and aggregated state-wise metrics.</li>
+        <li><strong>Projects Explorer:</strong> A searchable, filterable table where users can look up specific works, filter by risk level, and see why a project was flagged.</li>
+        <li><strong>Project Detail:</strong> Clicking a specific project reveals the full "evidence" behind its risk score (e.g., "Cost is 30% higher than peer average").</li>
+    </ul>
+
+    <h2>6. How to Demo to the Judges (Winning Strategy)</h2>
+    <div class="box">
+        <p><strong>Step 1: Start with the "Why"</strong></p>
+        <p>"Judges, tracking MPLADS funds across thousands of projects manually is impossible. Fraud and delays slip through the cracks. The Cipher Project solves this by acting as an AI auditor."</p>
+        
+        <p><strong>Step 2: Show the Frontend Dashboard</strong></p>
+        <p>"This is what a government auditor sees. Instead of reading spreadsheets, they see that out of 10,000 projects, 50 require immediate attention."</p>
+
+        <p><strong>Step 3: Dive into a High-Risk Project</strong></p>
+        <p>"Let's look at this specific project with a 95/100 risk score. As you can see on the Project Details page, the AI didn't just flag it; it provided <em>Explainable AI</em> reasons: The vendor concentration was unusual, and the cost deviated 40% from similar projects."</p>
+
+        <p><strong>Step 4: Explain the Tech Magic (Backend)</strong></p>
+        <p>"How did we know this? We didn't just do basic SQL. We built a Python pipeline that uses fuzzy string matching (RapidFuzz) to link messy datasets, and an Unsupervised Machine Learning model (Isolation Forest) to detect multi-dimensional anomalies that human eyes would miss."</p>
+    </div>
+
+    <h2>7. Key Questions Judges Might Ask (And How to Answer)</h2>
+    <p><strong>Q: Is it just rule-based checking?</strong><br>
+    <em>A: No, while we have rule-based financial checks, we also use Isolation Forest (ML) to catch complex, non-obvious anomalies based on peer comparisons.</em></p>
+    
+    <p><strong>Q: What if the raw data is incorrect?</strong><br>
+    <em>A: We don't overwrite raw data. Our pipeline treats IDs as corroborating evidence, not absolute truth. We use fuzzy text matching on project descriptions to handle data entry typos.</em></p>
+
+</body>
+</html>

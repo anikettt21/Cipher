@@ -187,8 +187,12 @@ export default function ProjectsExplorer() {
                   <td className="table-cell font-mono text-slate-500 text-xs">{project.recommendation_row_id}</td>
                   <td className="table-cell font-medium text-slate-900">{project.state}</td>
                   <td className="table-cell max-w-xs">
-                    <div className="truncate font-medium text-slate-800" title={project.category}>{project.category}</div>
-                    <div className="text-xs text-slate-500 mt-0.5 truncate">{project.mp_name} - {project.constituency}</div>
+                    <div className="truncate font-medium text-slate-800" title={project.work_description || project.category}>
+                      {project.work_description || project.category}
+                    </div>
+                    <div className="text-xs text-slate-500 mt-0.5 truncate">
+                      {project.category} • {project.mp_name} - {project.constituency}
+                    </div>
                   </td>
                   <td className="table-cell text-right font-medium text-slate-700">{project.match_score?.toFixed(1)}%</td>
                   <td className="table-cell text-right font-medium">{project.risk_score}</td>
