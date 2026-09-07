@@ -179,7 +179,7 @@ export default function Dashboard() {
             <thead>
               <tr>
                 <th className="table-header w-16">ID</th>
-                <th className="table-header">MP Name</th>
+                <th className="table-header">MP / Work Description</th>
                 <th className="table-header">State</th>
                 <th className="table-header text-right">Risk Score</th>
                 <th className="table-header">Risk Level</th>
@@ -193,7 +193,14 @@ export default function Dashboard() {
                   className="table-row cursor-pointer"
                 >
                   <td className="table-cell font-mono text-slate-500">{project.recommendation_row_id}</td>
-                  <td className="table-cell font-medium text-slate-900">{project.mp_name}</td>
+                  <td className="table-cell max-w-xs">
+                    <div className="font-medium text-slate-900">{project.mp_name}</div>
+                    {project.work_description && (
+                      <div className="text-xs text-slate-500 mt-0.5 truncate" title={project.work_description}>
+                        {project.work_description}
+                      </div>
+                    )}
+                  </td>
                   <td className="table-cell">{project.state}</td>
                   <td className="table-cell text-right font-medium">{project.risk_score}</td>
                   <td className="table-cell">

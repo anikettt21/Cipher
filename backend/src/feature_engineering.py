@@ -28,6 +28,7 @@ def build_project_features(recommendations: pd.DataFrame, completions: pd.DataFr
             "category": rr.get("category", ""),
             "ida": rr.get("ida", ""),
             "work_description": rr.get("work_description", ""),
+            "completion_work_description": cc.get("work_description", ""),
             "recommended_amount": rec_amt,
             "final_amount": final_amt,
             "amount_difference": diff,

@@ -119,6 +119,12 @@ export default function ProjectDetail() {
                     ₹{project.recommended_amount ? project.recommended_amount.toLocaleString() : 'N/A'}
                   </span>
                 </div>
+                <div>
+                  <span className="text-xs text-slate-500 block">Description</span>
+                  <span className="text-sm text-slate-800 leading-relaxed block mt-1">
+                    {project.work_description || 'N/A'}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -138,6 +144,12 @@ export default function ProjectDetail() {
                 <div>
                   <span className="text-xs text-slate-500 block">Days to Completion</span>
                   <span className="text-slate-800">{project.days_to_completion || 'N/A'} days</span>
+                </div>
+                <div>
+                  <span className="text-xs text-slate-500 block">Description</span>
+                  <span className="text-sm text-slate-800 leading-relaxed block mt-1">
+                    {project.completion_work_description || 'N/A'}
+                  </span>
                 </div>
               </div>
             </div>
