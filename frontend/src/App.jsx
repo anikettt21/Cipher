@@ -25,10 +25,10 @@ function Navigation() {
       <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded bg-slate-900 flex items-center justify-center text-white font-bold text-lg">
-            M
+            K
           </div>
           <h1 className="text-xl font-bold text-slate-900 tracking-tight">
-            MPLADS Transparency & Risk Intelligence
+            KaryaSetu
           </h1>
         </div>
       

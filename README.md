@@ -1,6 +1,6 @@
-# The Cipher Project - SIH26102
+# The Cipher Project
 
-This repository contains the MPLADS anomaly and risk analysis system for SIH26102.
+This repository contains the MPLADS anomaly and risk analysis system.
 
 ## Project Structure
 - `backend/` - The core analytical pipeline, matching engine, and data models. (See `backend/README.md` for quickstart)
