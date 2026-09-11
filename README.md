@@ -9,3 +9,6 @@ This repository contains the MPLADS anomaly and risk analysis system.
 
 ## Getting Started
 To get started with the data pipeline, please follow the instructions in [backend/README.md](backend/README.md).
+
+
+The project submitted successfully,. waiting for the result...
