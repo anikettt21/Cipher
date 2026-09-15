@@ -168,6 +168,28 @@ export default function ProjectDetail() {
               </div>
             </div>
           </div>
+
+          {/* AI Summary Section */}
+          <div className="institutional-card overflow-hidden">
+            <div className="bg-slate-50 p-5 border-b border-slate-200 flex items-center justify-between">
+              <h3 className="text-base font-semibold text-slate-900 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-slate-500" />
+                AI Summary
+              </h3>
+            </div>
+            <div className="p-6">
+              {aiLoading ? (
+                <div className="flex items-center gap-3 text-slate-500">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
+                  <span className="text-sm font-medium animate-pulse">Generating risk context...</span>
+                </div>
+              ) : (
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  {aiExplanation}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Risk Analysis Side Panel */}
@@ -207,28 +229,6 @@ export default function ProjectDetail() {
                   <BrainCircuit className="w-4 h-4 text-slate-700 shrink-0 mt-0.5" />
                   <p className="text-sm font-medium text-slate-800">Flagged by anomaly detection model</p>
                 </div>
-              )}
-            </div>
-          </div>
-
-          {/* AI Summary Section */}
-          <div className="institutional-card overflow-hidden">
-            <div className="bg-slate-50 p-5 border-b border-slate-200 flex items-center justify-between">
-              <h3 className="text-base font-semibold text-slate-900 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-slate-500" />
-                AI Summary
-              </h3>
-            </div>
-            <div className="p-6">
-              {aiLoading ? (
-                <div className="flex items-center gap-3 text-slate-500">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-                  <span className="text-sm font-medium animate-pulse">Generating risk context...</span>
-                </div>
-              ) : (
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  {aiExplanation}
-                </p>
               )}
             </div>
           </div>
